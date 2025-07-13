@@ -1,0 +1,120 @@
+
+# Auction Automation System Configuration
+system:
+  name: "CarMax/Manheim Auction Automation"
+  version: "1.0.0"
+  environment: "production"  # test, staging, production
+  
+# Browser Configuration
+browser:
+  headless: true
+  stealth_mode: true
+  user_data_dir: "./profiles"
+  proxy_enabled: false
+  proxy_rotation: true
+  residential_proxies: []
+  
+# Platform Configurations
+platforms:
+  carmax:
+    base_url: "https://www.carmax.com/auctions"
+    login_url: "https://www.carmax.com/login"
+    search_endpoint: "/search"
+    rate_limit: 5  # seconds between requests
+    max_concurrent: 3
+    
+  manheim:
+    base_url: "https://www.manheim.com"
+    login_url: "https://www.manheim.com/login"
+    api_base: "https://developer.manheim.com"
+    rate_limit: 8
+    max_concurrent: 2
+
+# External Service Integration
+integrations:
+  carfax:
+    enabled: true
+    api_key: "${CARFAX_API_KEY}"
+    fallback_scraping: true
+    
+  autocheck:
+    enabled: true
+    api_key: "${AUTOCHECK_API_KEY}"
+    fallback_scraping: true
+    
+  dealerslink:
+    enabled: true
+    api_key: "${DEALERSLINK_API_KEY}"
+    username: "${DEALERSLINK_USERNAME}"
+    password: "${DEALERSLINK_PASSWORD}"
+    
+  cargurus:
+    enabled: true
+    scraping_only: true
+    
+# AI Configuration
+ai:
+  image_analysis:
+    model: "yolov8"
+    confidence_threshold: 0.7
+    damage_detection: true
+    
+  obd2_analysis:
+    enabled: true
+    critical_codes: ["P0700", "P0750", "P0755", "P0760"]
+    
+  dashboard_analysis:
+    enabled: true
+    warning_lights: ["check_engine", "transmission", "abs", "airbag"]
+
+# Vehicle Filtering Criteria
+filtering:
+  avoid_criteria:
+    - "transmission_flush"
+    - "major_electrical_issues"
+    - "major_transmission_issues"
+    - "major_engine_issues"
+    - "non_working_headlights"
+    
+  prefer_criteria:
+    - "minor_paint_work"
+    - "minor_body_work"
+    - "working_headlights"
+    - "obd2_ready"
+    
+  price_range:
+    min: 5000
+    max: 50000
+    
+  mileage_range:
+    max: 150000
+    
+  year_range:
+    min: 2015
+
+# Data Storage
+storage:
+  format: "json"  # json, csv, both
+  backup_enabled: true
+  cloud_storage: false
+  local_path: "./data"
+  
+# Logging Configuration
+logging:
+  level: "INFO"
+  file_path: "./logs/auction_bot.log"
+  max_file_size: "10MB"
+  backup_count: 5
+  
+# Security
+security:
+  encryption_enabled: true
+  session_encryption: true
+  credential_encryption: true
+  
+# Monitoring
+monitoring:
+  enabled: true
+  webhook_url: "${MONITORING_WEBHOOK}"
+  alert_on_errors: true
+  performance_tracking: true
