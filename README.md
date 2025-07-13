@@ -32,12 +32,39 @@ A comprehensive, AI-powered vehicle auction automation system that discovers, an
 ## Quick Start
 
 ### 1. System Setup
+
+#### For Python 3.12 Users (Recommended)
+```bash
+# Clone and setup the system
+cd ~/auction_automation_system
+
+# Create Python 3.12 virtual environment
+python3.12 -m venv venv_py312
+source venv_py312/bin/activate  # On Windows: venv_py312\Scripts\activate
+
+# Install Python 3.12 compatible dependencies
+pip install --upgrade pip setuptools
+pip install -r requirements-py312.txt
+
+# Install browser dependencies
+playwright install
+```
+
+#### For Python 3.11 and Earlier
 ```bash
 # Clone and setup the system
 cd ~/auction_automation_system
 chmod +x run.sh
 ./run.sh setup
+
+# Or manual setup:
+python3 -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+pip install -r requirements.txt
+playwright install
 ```
+
+**⚠️ Python 3.12 Compatibility Note**: If you encounter `AttributeError: module 'pkgutil' has no attribute 'ImpImporter'` errors, please use the Python 3.12 specific requirements file (`requirements-py312.txt`) or see our [Python 3.12 Setup Guide](PYTHON_312_SETUP.md) for detailed troubleshooting.
 
 ### 2. Configuration
 ```bash
@@ -280,8 +307,11 @@ export LOG_LEVEL=DEBUG
 ## Support
 
 ### System Requirements
-- Python 3.8+
-- 4GB RAM minimum
+- **Python 3.9+ (Python 3.12 recommended)**
+  - For Python 3.12: Use `requirements-py312.txt`
+  - For Python 3.11 and earlier: Use `requirements.txt`
+  - See [Python 3.12 Setup Guide](PYTHON_312_SETUP.md) for compatibility details
+- 4GB RAM minimum (8GB recommended)
 - 10GB storage space
 - Stable internet connection
 

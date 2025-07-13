@@ -1,0 +1,61 @@
+
+# Python 3.12 Compatible Requirements
+# Updated versions to resolve pkgutil.ImpImporter and other compatibility issues
+
+# Web automation and browser control
+undetected-chromedriver==3.5.4
+playwright>=1.39.0  # Fixed Python 3.12 support in 1.39.0
+playwright-stealth==1.0.6
+selenium>=4.15.2  # Officially supports Python 3.12
+
+# HTTP requests and web scraping
+requests==2.31.0
+beautifulsoup4==4.12.2
+aiohttp==3.9.1
+fake-useragent==1.4.0
+fingerprint-suite==1.2.0
+
+# Computer vision and image processing
+opencv-python>=4.8.1.78  # Supports Python 3.12
+pillow>=10.1.0  # Official Python 3.12 support from 10.1.0
+
+# Data science and machine learning
+numpy>=1.26.0  # Critical: 1.26.0+ required for Python 3.12 compatibility
+pandas>=2.1.3  # Works with Python 3.12 on 64-bit systems
+scikit-learn>=1.3.2  # Officially supports Python 3.12
+
+# Deep learning frameworks
+tensorflow>=2.15.0  # Official Python 3.12 support
+torch>=2.1.1  # May need nightly builds for full 3.12 support
+torchvision>=0.16.1
+transformers>=4.36.0
+
+# Security and authentication
+cryptography>=41.0.8
+pyotp==2.9.0
+
+# Cloud and storage
+boto3==1.34.0
+
+# Configuration and utilities
+pyyaml==6.0.1
+python-dotenv==1.0.0
+schedule==1.2.0
+loguru==0.7.2
+rich==13.7.0
+typer==0.9.0
+
+# Web framework and API
+fastapi==0.104.1
+uvicorn==0.24.0
+
+# Database
+sqlalchemy==2.0.23
+alembic==1.13.0
+redis==5.0.1
+
+# Task queue
+celery==5.3.4
+tenacity==8.2.3
+
+# Note: asyncio==3.4.3 removed as it's built into Python 3.12
