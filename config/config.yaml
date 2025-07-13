@@ -34,7 +34,13 @@ platforms:
 integrations:
   carfax:
     enabled: true
+    # Legacy API key support
     api_key: "${CARFAX_API_KEY}"
+    # CARFAX Service History API credentials (preferred method)
+    product_data_id: "${CARFAX_PRODUCT_DATA_ID}"
+    location_id: "${CARFAX_LOCATION_ID}"
+    # Configuration options
+    use_wrapper_api: true
     fallback_scraping: true
     
   autocheck:
